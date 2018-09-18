@@ -33,7 +33,7 @@ values
     'Kristine Leander',
     'Norwegian Seattle',
     '9780738559605',
-    'ttp://books.google.com/books/content?id=mo7Oa5Vtv1sC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+    'http://books.google.com/books/content?id=mo7Oa5Vtv1sC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
     'The Norwegians who immigrated to Seattle were a sturdy stock. Perhaps it was due to their ancient history as determined Viking seafarers--or their more recent experiences as tenacious fishermen, farmers, loggers, and carpenters. From the first Norwegians to arrive in 1868 through today, Seattle Norwegian American community has maintained a remarkable cohesiveness. They participate in Sons and Daughters of Norway and other clubs; enjoy lutefisk dinners, lively music and dance groups, and the annual May 17 parade; boast elaborately knitted sweaters and historic costumes; and labor over language classes and genealogy. The result is a pride of heritage unique to the Norwegian Americans in Seattle and a sinew that binds their community.'
 );
 

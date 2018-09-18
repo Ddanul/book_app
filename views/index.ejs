@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>
-    <%= title %>
+    Alex and Danul Book App
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="vendor/styles/normalize.css">
@@ -34,6 +34,19 @@
     </nav>
   </header>
   <main>
+    <section>
+      <h2>All Books</h2>
+      <div>
+        <% books.forEach( book =>  {%>
+          <div> <img src="<%= book.image_url %>"/>
+            <h3><%= book.title %></h3>
+            <h4><%= book.author %></h4>
+            <p>ISBN: <%= book.isbn %></p>
+            <p>Description: <%=book.description %></p>
+          </div> 
+        <% }); %>
+      </div>
+    </section>
     <section id="about" class="tab-content">
       <header>
         Welcome to my Blog

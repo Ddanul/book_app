@@ -20,7 +20,22 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static('./public'));
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Danul and Alex Book App' });
+  client.query('SELECT * FROM books;')
+    .then(data => {
+      res.render('index', { books: data.rows });
+    }).catch(err => {
+      console.error(err);
+    });
+});
+
+//grabbing and returning all book objects from database
+app.get('/books', (req, res) => {
+  client.query('SELECT * FROM books;')
+    .then(data => {
+      res.render('index', { books: data.rows });
+    }).catch(err => {
+      console.error(err);
+    });
 });
 
 app.listen(PORT, () => {
