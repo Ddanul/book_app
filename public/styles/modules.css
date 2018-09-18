@@ -1,7 +1,7 @@
 /* === OVERALL MODULE RULES === */
 
 body > header {
-  background: #FFEAAA;
+  background: #ffeaaa;
 }
 
 nav {
@@ -20,12 +20,17 @@ nav:hover ul {
 }
 
 nav li {
-  margin-right: .4em;
+  margin-right: 0.4em;
   font-size: 1.5em;
-  padding: .5em .2em;
+  padding: 0.5em 0.2em;
   border-bottom: 1px solid #ccc;
 }
 
+.message {
+  font-size: 1.5em;
+  color: #aaa;
+  padding: 2em;
+}
 /* === ARTICLE FORMATTING === */
 
 address {
@@ -39,7 +44,7 @@ address a {
 }
 
 #article-export label {
-  font-size: .8em;
+  font-size: 0.8em;
   font-style: italic;
   color: #ccc;
 }
@@ -52,13 +57,16 @@ p {
 
 /* === LINK STYLES === */
 
-a, a:link, a:active {
+a,
+a:link,
+a:active {
   text-decoration: none;
   color: #777;
 }
 
-a:hover, a:focus {
-  color: #29506D;
+a:hover,
+a:focus {
+  color: #29506d;
 }
 
 /* === FORM STYLES === */
@@ -69,32 +77,34 @@ label {
 
 input {
   width: 100%;
-  margin: .5em 0;
+  margin: 0.5em 0;
   border: 1px solid #ccc;
   border-width: 0 0 1px 0;
   border-radius: 0;
 }
 
 input[type="checkbox"] {
-  width: .28em;
-  height: .28em;
+  width: 0.28em;
+  height: 0.28em;
   font-size: 3em;
 }
 
 textarea {
   width: 100%;
-  margin: .5em 0;
+  margin: 0.5em 0;
   font-size: 2em;
   border: 1px solid #ccc;
   border-radius: 0;
 }
 
-input:invalid, textarea:invalid {
-  border-color: #AE3F3C;
+input:invalid,
+textarea:invalid {
+  border-color: #ae3f3c;
 }
 
-input:valid, textarea:valid {
-  border-color: #89CB8E;
+input:valid,
+textarea:valid {
+  border-color: #89cb8e;
 }
 
 /* === ICON FONT === */
@@ -119,7 +129,7 @@ input:valid, textarea:valid {
   }
 
   nav {
-    padding: .2em .2em .2em 2em;
+    padding: 0.2em 0.2em 0.2em 2em;
   }
 
   nav ul {
@@ -132,6 +142,6 @@ input:valid, textarea:valid {
   }
 
   nav ul li:hover a {
-    color: #29506D;
+    color: #29506d;
   }
 }
