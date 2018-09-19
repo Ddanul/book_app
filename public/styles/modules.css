@@ -1,4 +1,7 @@
 /* === OVERALL MODULE RULES === */
+body {
+  background-color: #ccc;
+}
 
 body > header {
   background: #ffeaaa;
@@ -26,102 +29,50 @@ nav li {
   border-bottom: 1px solid #ccc;
 }
 
-.message {
-  font-size: 1.5em;
-  color: #aaa;
-  padding: 2em;
-}
-/* === ARTICLE FORMATTING === */
-
-address {
-  color: #777;
-  display: inline-block;
+/* === MEDIA OBJ FORMATTING === */
+.media-obj {
+  box-shadow: 2px 2px 4px 4px #29506d;
+  width: 80vw;
+  margin: 1em auto;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
 }
 
-address a {
-  font-weight: bold;
-  text-decoration: none;
+.media-obj__picture {
+  flex: 1 1 auto;
+  min-width: 80%;
+  height: auto;
 }
-
-#article-export label {
-  font-size: 0.8em;
+.media-obj__data {
+  width: 100%;
+  text-align: center;
+}
+.media-obj__header {
+  font-size: 2em;
+  color: #fff;
+  text-shadow: 2px 2px #29506d;
+}
+.--smaller {
+  font-size: 1.2em;
+  color: initial;
+  text-shadow: initial;
   font-style: italic;
-  color: #ccc;
 }
-
-/* === TEXT STYLES === */
+.data__text {
+}
+.--short {
+  font-style: italic;
+}
+.--long {
+  background-color: #eee;
+  padding: 0.7em;
+  text-align: initial;
+}
 
 p {
   font-size: 1em;
 }
-
-/* === LINK STYLES === */
-
-a,
-a:link,
-a:active {
-  text-decoration: none;
-  color: #777;
-}
-
-a:hover,
-a:focus {
-  color: #29506d;
-}
-
-/* === FORM STYLES === */
-
-label {
-  font-size: 3em;
-}
-
-input {
-  width: 100%;
-  margin: 0.5em 0;
-  border: 1px solid #ccc;
-  border-width: 0 0 1px 0;
-  border-radius: 0;
-}
-
-input[type="checkbox"] {
-  width: 0.28em;
-  height: 0.28em;
-  font-size: 3em;
-}
-
-textarea {
-  width: 100%;
-  margin: 0.5em 0;
-  font-size: 2em;
-  border: 1px solid #ccc;
-  border-radius: 0;
-}
-
-input:invalid,
-textarea:invalid {
-  border-color: #ae3f3c;
-}
-
-input:valid,
-textarea:valid {
-  border-color: #89cb8e;
-}
-
-/* === ICON FONT === */
-
-.icon-menu {
-  font-size: 3em;
-  float: right;
-}
-
-/* === FILTER STYLES === */
-
-#filters {
-  padding: 0;
-  list-style: none;
-}
-
-/* === MEDIA QUERY === */
 
 @media only screen and (min-width: 640px) {
   .icon-menu {

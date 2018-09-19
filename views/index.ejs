@@ -23,7 +23,7 @@
       <%=count %> stored )</h2>
     <div>
       <% books.forEach( book =>  {%>
-      <%- include('partials/item', { book: book }); -%>
+      <%- include('partials/itemShort', { book: book }); -%>
       <form action="/book/<%= book.id %>" method="get">
         <input type="submit" value="Details" />
       </form>

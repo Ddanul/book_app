@@ -1,0 +1,17 @@
+<div class="media-obj">
+  <img class="media-obj__picture" src="<%= book.image_url %>" />
+  <div class="media-obj__data">
+    <h3 class="media-obj__header">
+      <%= book.title %>
+    </h3>
+    <h4 class="media-obj__header  --smaller">
+      <%= book.author %>
+    </h4>
+    <p class="data__text  --long">Description:
+      <%=book.description %>
+    </p>
+    <p class="data__text  --short">ISBN:
+      <%= book.isbn %>
+    </p>
+  </div>
+</div>
