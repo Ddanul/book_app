@@ -13,6 +13,7 @@ const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 client.on('error', error => {
   console.error(error);
+  createError(error.status, 'DB Connection Error');
 });
 
 app.set('views', path.join(__dirname, 'views'));
@@ -20,7 +21,11 @@ app.set('view engine', 'ejs');
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static('./public'));
-app.get('/', (req, res) => {
+
+app.get('/', (req, res) => res.redirect('/books'));
+
+//grabbing and returning all book objects from database
+app.get('/books', (req, res) => {
   client
     .query('SELECT * FROM books;')
     .then(data => {
@@ -30,18 +35,19 @@ app.get('/', (req, res) => {
     })
     .catch(err => {
       console.error(err);
+      createError(500, 'DB Read Error');
     });
 });
 
-//grabbing and returning all book objects from database
-app.get('/books', (req, res) => {
+app.get('/book/:id', (req, res) => {
+  let SQL = 'select * from books where id = $1';
+  let values = [req.params.id];
   client
-    .query('SELECT * FROM books;')
-    .then(data => {
-      res.render('index', { books: data.rows });
-    })
+    .query(SQL, values)
+    .then(data => res.render('pages/show', { book: data.rows[0] }))
     .catch(err => {
       console.error(err);
+      createError(500, 'DB Read Error');
     });
 });
 
