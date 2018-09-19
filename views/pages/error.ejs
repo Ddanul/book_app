@@ -1,49 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title>
-    Alex and Danul Book App
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="vendor/styles/normalize.css">
-  <link rel="stylesheet" href="vendor/styles/icons.css">
-  <link rel="stylesheet" href="styles/base.css">
-  <link rel="stylesheet" href="styles/layout.css">
-  <link rel="stylesheet" href="styles/modules.css">
-  <link rel="icon" type="image/x-icon" href="https://avatars2.githubusercontent.com/u/18607604?v=3&s=200">
-</head>
-
-<body>
-  <header class="clearfix">
-    <section class="heading-group-h1">
-      <h1>
-        Book App!
-      </h1>
-      <h2>The shocking power of back-end engines</h2>
-    </section>
-  </header>
-  <main>
-    <section id="error" class="error-content">
-      <h1>
-        We've got error -
-        <%= code %>
-      </h1>
-      <p class="message">
-        <%= message %>
-      </p>
-    </section>
-  </main>
-  <footer>
-    &copy; 2018 Code Fellows | Book App
-  </footer>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="scripts/books.js"></script>
-  <script>
-
-  </script>
-</body>
-
-</html>
+<%- include('../partials/header'); -%>
+<header class="clearfix">
+  <section class="heading-group-h1">
+    <h1>
+      Book App!
+    </h1>
+    <h2>The shocking power of back-end engines</h2>
+  </section>
+</header>
+<main>
+  <section id="error" class="error-content">
+    <h1>
+      We've got error -
+      <%= code %>
+    </h1>
+    <p class="message">
+      <%= message %>
+    </p>
+  </section>
+</main>
+<%- include('../partials/footer'); -%>

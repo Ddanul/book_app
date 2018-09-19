@@ -19,12 +19,18 @@ function getBooks(req, res) {
     });
 }
 
-function getDetails(req, res) {
+function getDetails(req, res, next) {
   let SQL = 'select * from books where id = $1';
   let values = [req.params.id];
   client
     .query(SQL, values)
-    .then(data => res.render('pages/show', { book: data.rows[0] }))
+    .then(data => {
+      if (data.rows.length !== 0) {
+        res.render('pages/show', { book: data.rows[0] });
+      } else {
+        next(createError(500, 'No data in DB'));
+      }
+    })
     .catch(err => {
       console.error(err);
       createError(500, 'DB Read Error');
@@ -56,4 +62,4 @@ module.exports = {
   handleError,
   handleConnectionError,
   handle404
-}
+};
