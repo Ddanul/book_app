@@ -2,8 +2,8 @@
 
 Code Fellows 301 Week 3 Paired-Programming Lab
 
-**Authors**: Alex and Danul
-**Version**: 1.3.0
+**Authors**: Alex and Danul</br>
+**Version**: 1.6.0
 
 ## Overview
 
@@ -19,10 +19,14 @@ EJS, Node, Express, Postgresql
 
 ## Change Log
 
-09-18-2018 12:22pm - App v1 released.
-09-18-2018 11:46am - Books are shown.
+09-20-2018 11:00am - Added Validation</br>
+09-20-2018 10:00am - Added User Form</br>
+09-19-2018 12:00pm - Separated Helper Functions</br>
+09-19-2018 11:00am - Displayed Single Book</br>
+09-18-2018 12:22pm - App v1 released</br>
+09-18-2018 11:46am - Books are shown</br>
 09-18-2018 9:30am - Initial Scaffolding.
 
 ## Credits and Collaborations
 
-Alex Stoforandov, Danul De Leon, and Google Books API.
+Alex Stoforandov, Danul De Leon, and Google Books API, Validator Module, HTTP Error Module
