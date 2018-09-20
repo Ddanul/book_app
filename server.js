@@ -18,6 +18,8 @@ app.get('/', (req, res) => res.redirect('/books'));
 
 //grabbing and returning all book objects from database
 app.get('/books', tasks.getBooks);
+//add new book to DB
+app.post('/books', tasks.addBookToDb);
 //details for one book
 app.get('/book/:id', tasks.getDetails);
 //display form

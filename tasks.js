@@ -56,8 +56,24 @@ function handle404(req, res, next) {
   next(createError(404));
 }
 
-function newBookForm(req, res){
+function newBookForm(req, res) {
   res.render('pages/new');
+}
+
+function addBookToDb(req, res, next) {
+  let SQL =
+    'insert into books (title, author, isbn, description, image_url) values($1, $2, $3, $4, $5) returning id;';
+  let values = [
+    req.body.title,
+    req.body.author,
+    req.body.isbn,
+    req.body.description,
+    req.body.image_url
+  ];
+  client
+    .query(SQL, values)
+    .then(data => res.redirect(`/book/${data.rows[0].id}`))
+    .catch(err => next(createError(500, 'Error while saving to DB')));
 }
 
 module.exports = {
@@ -66,5 +82,6 @@ module.exports = {
   handleError,
   handleConnectionError,
   handle404,
+  addBookToDb,
   newBookForm
 };
