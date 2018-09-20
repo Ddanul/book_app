@@ -70,6 +70,27 @@ nav li {
   text-align: initial;
 }
 
+.input {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: .3em;
+  padding: .5em;
+}
+
+.label {
+  display: inline-block;
+  position: relative;
+  left: -999px;
+}
+
+.form__header {
+  font-size: 1.5em;
+  margin-top: 1em;
+  text-align: center;
+  font-weight: 600;
+}
+
 p {
   font-size: 1em;
 }

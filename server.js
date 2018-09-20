@@ -20,6 +20,8 @@ app.get('/', (req, res) => res.redirect('/books'));
 app.get('/books', tasks.getBooks);
 //details for one book
 app.get('/book/:id', tasks.getDetails);
+//display form
+app.get('/new_book', tasks.newBookForm);
 
 app.use(tasks.handle404);
 
