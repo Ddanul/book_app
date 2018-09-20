@@ -3,13 +3,13 @@
 <h1 class="form__header">Add A New Book</h1>
 <form class="form" action="/books" method="POST">
     <label for="title" class="label">Title:</label>
-    <input type="text" class="input" name="title" id="title" placeholder="Title">
+    <input type="text" class="input" required name="title" id="title" placeholder="Title">
     <label for="author" class="label">Author:</label>
-    <input type="text" class="input" name="author" id="author" placeholder="Author">
+    <input type="text" class="input" required name="author" id="author" placeholder="Author">
     <label for="isbn" class="label">ISBN:</label>
-    <input type="text" class="input" name="isbn" id="isbn" placeholder="ISBN">
+    <input type="text" class="input" name="isbn" required id="isbn" placeholder="ISBN">
     <label for="description" class="label">Description:</label>
-    <textarea name="description" class="input --long" id="description" placeholder="Description"></textarea>
+    <textarea name="description" class="input --long" required id="description" placeholder="Description"></textarea>
     <label for="image_url" class="label">Image URL:</label>
     <input type="text" class="input" name="image_url" id="image_url" placeholder="Image URL">
     <input type="submit" value="Save">

@@ -1,4 +1,5 @@
 const pg = require('pg');
+const validator = require('validator');
 var createError = require('http-errors');
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
@@ -63,17 +64,28 @@ function newBookForm(req, res) {
 function addBookToDb(req, res, next) {
   let SQL =
     'insert into books (title, author, isbn, description, image_url) values($1, $2, $3, $4, $5) returning id;';
-  let values = [
-    req.body.title,
-    req.body.author,
-    req.body.isbn,
-    req.body.description,
-    req.body.image_url
-  ];
-  client
-    .query(SQL, values)
-    .then(data => res.redirect(`/book/${data.rows[0].id}`))
-    .catch(err => next(createError(500, 'Error while saving to DB')));
+  let validationResult =
+    validator.isAscii(req.body.title) &&
+    validator.isAscii(req.body.author) &&
+    validator.isURL(req.body.image_url) &&
+    validator.isISBN(req.body.isbn);
+  if (!validationResult) next(createError(400, 'Input malformed'));
+  else {
+    let descriptionSanitized = validator.escape(req.body.description);
+    console.log(descriptionSanitized);
+    let values = [
+      req.body.title,
+      req.body.author,
+      req.body.isbn,
+      descriptionSanitized,
+      req.body.image_url
+    ];
+    console.log(values);
+    client
+      .query(SQL, values)
+      .then(data => res.redirect(`/book/${data.rows[0].id}`))
+      .catch(err => next(createError(500, 'Error while saving to DB')));
+  }
 }
 
 module.exports = {
