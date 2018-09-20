@@ -1,0 +1,17 @@
+<%- include('../partials/header'); -%>
+<%- include('../partials/nav') -%>
+<h1 class="form__header">Add A New Book</h1>
+<form class="form" action="/books" method="POST">
+    <label for="title" class="label">Title:</label>
+    <input type="text" class="input" name="title" id="title" placeholder="Title">
+    <label for="author" class="label">Author:</label>
+    <input type="text" class="input" name="author" id="author" placeholder="Author">
+    <label for="isbn" class="label">ISBN:</label>
+    <input type="text" class="input" name="isbn" id="isbn" placeholder="ISBN">
+    <label for="description" class="label">Description:</label>
+    <textarea name="description" class="input --long" id="description" placeholder="Description"></textarea>
+    <label for="image_url" class="label">Image URL:</label>
+    <input type="text" class="input" name="image_url" id="image_url" placeholder="Image URL">
+    <input type="submit" value="Save">
+</form>
+<%- include('../partials/footer'); -%>

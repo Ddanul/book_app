@@ -9,3 +9,11 @@ body {
 main {
   margin: 0 20px;
 }
+
+html {
+ box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}

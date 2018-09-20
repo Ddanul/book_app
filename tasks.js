@@ -56,10 +56,15 @@ function handle404(req, res, next) {
   next(createError(404));
 }
 
+function newBookForm(req, res){
+  res.render('pages/new');
+}
+
 module.exports = {
   getBooks,
   getDetails,
   handleError,
   handleConnectionError,
-  handle404
+  handle404,
+  newBookForm
 };
