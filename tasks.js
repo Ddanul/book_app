@@ -27,7 +27,7 @@ function getDetails(req, res, next) {
     .query(SQL, values)
     .then(data => {
       if (data.rows.length !== 0) {
-        res.render('pages/show', { book: data.rows[0] });
+        res.render('pages/books/show', { book: data.rows[0] });
       } else {
         next(createError(500, 'No data in DB'));
       }
@@ -58,7 +58,7 @@ function handle404(req, res, next) {
 }
 
 function newBookForm(req, res) {
-  res.render('pages/new');
+  res.render('pages/books/new');
 }
 
 function addBookToDb(req, res, next) {
