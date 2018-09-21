@@ -1,5 +1,10 @@
+// (engine) add user input validation for search form;
+// (engine) add logic for inauthor or intitle search;
+// (UI) add message on saving book to DB;
+
 const pg = require('pg');
 const validator = require('validator');
+const superagent = require('superagent');
 var createError = require('http-errors');
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
@@ -27,7 +32,7 @@ function getDetails(req, res, next) {
     .query(SQL, values)
     .then(data => {
       if (data.rows.length !== 0) {
-        res.render('pages/show', { book: data.rows[0] });
+        res.render('pages/books/show', { book: data.rows[0] });
       } else {
         next(createError(500, 'No data in DB'));
       }
@@ -58,7 +63,7 @@ function handle404(req, res, next) {
 }
 
 function newBookForm(req, res) {
-  res.render('pages/new');
+  res.render('pages/books/new');
 }
 
 function addBookToDb(req, res, next) {
@@ -80,12 +85,35 @@ function addBookToDb(req, res, next) {
       descriptionSanitized,
       req.body.image_url
     ];
-    console.log(values);
     client
       .query(SQL, values)
       .then(data => res.redirect(`/book/${data.rows[0].id}`))
       .catch(err => next(createError(500, 'Error while saving to DB')));
   }
+}
+
+function searchBookForm(req, res, next) {
+  res.render('pages/searches/new');
+}
+
+function searchForBooksExternalApi(req, res, next) {
+  let searchTerm = req.query.q;
+  superagent
+    .get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
+    .end((err, data) => {
+      // res.send(data.body.items);
+      let results = data.body.items.map(item => {
+        let author = item.volumeInfo.authors ? item.volumeInfo.authors[0] : '';
+        return {
+          title: item.volumeInfo.title,
+          author,
+          isbn: item.volumeInfo.industryIdentifiers[0].identifier,
+          image_url: item.volumeInfo.imageLinks.thumbnail,
+          description: item.volumeInfo.description
+        };
+      });
+      res.render('pages/searches/show', { results: results });
+    });
 }
 
 module.exports = {
@@ -95,5 +123,7 @@ module.exports = {
   handleConnectionError,
   handle404,
   addBookToDb,
-  newBookForm
+  newBookForm,
+  searchBookForm,
+  searchForBooksExternalApi
 };
