@@ -25,6 +25,9 @@ app.get('/book/:id', tasks.getDetails);
 //display form
 app.get('/new_book', tasks.newBookForm);
 
+app.get('/search', tasks.searchBookForm);
+app.get('/search_request/', tasks.searchForBooksExternalApi);
+
 app.use(tasks.handle404);
 
 // error handler
