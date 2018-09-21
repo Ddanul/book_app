@@ -1,6 +1,4 @@
 // (engine) add user input validation for search form;
-// (engine) add logic for inauthor or intitle search;
-// (UI) add message on saving book to DB;
 
 const pg = require('pg');
 const validator = require('validator');
@@ -32,7 +30,7 @@ function getDetails(req, res, next) {
     .query(SQL, values)
     .then(data => {
       if (data.rows.length !== 0) {
-        res.render('pages/books/show', { book: data.rows[0] });
+        res.render('pages/books/show', { book: data.rows[0], added: req.query.added});
       } else {
         next(createError(500, 'No data in DB'));
       }
@@ -77,7 +75,6 @@ function addBookToDb(req, res, next) {
   if (!validationResult) next(createError(400, 'Input malformed'));
   else {
     let descriptionSanitized = validator.escape(req.body.description);
-    console.log(descriptionSanitized);
     let values = [
       req.body.title,
       req.body.author,
@@ -87,8 +84,12 @@ function addBookToDb(req, res, next) {
     ];
     client
       .query(SQL, values)
-      .then(data => res.redirect(`/book/${data.rows[0].id}`))
-      .catch(err => next(createError(500, 'Error while saving to DB')));
+      .then(data => {
+        res.redirect(`/book/${data.rows[0].id}?added=true`)
+      })
+      .catch(err => {
+        console.log(err);
+        next(createError(500, 'Error while saving to DB'))});
   }
 }
 
@@ -98,17 +99,25 @@ function searchBookForm(req, res, next) {
 
 function searchForBooksExternalApi(req, res, next) {
   let searchTerm = req.query.q;
+  if (req.query.inauthor === 'on') {
+    searchTerm = `inauthor:${req.query.q}`;
+  } else if (req.query.intitle === 'on') {
+    searchTerm = `intitle:${req.query.q}`;
+  }
+  let url = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`;
+  console.log(url);
   superagent
-    .get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
+    .get(url)
     .end((err, data) => {
       // res.send(data.body.items);
       let results = data.body.items.map(item => {
         let author = item.volumeInfo.authors ? item.volumeInfo.authors[0] : '';
+        let image_url = item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : '';
         return {
           title: item.volumeInfo.title,
           author,
           isbn: item.volumeInfo.industryIdentifiers[0].identifier,
-          image_url: item.volumeInfo.imageLinks.thumbnail,
+          image_url,
           description: item.volumeInfo.description
         };
       });
