@@ -19,13 +19,15 @@ EJS, Node, Express, Postgresql
 
 ## Change Log
 
+09-21-2018 10:15am - Added Search and Save Book from Google Books API</br>
+09-21-2018 9:30am - Restructured Folders</br>
 09-20-2018 11:00am - Added Validation</br>
 09-20-2018 10:00am - Added User Form</br>
 09-19-2018 12:00pm - Separated Helper Functions</br>
 09-19-2018 11:00am - Displayed Single Book</br>
 09-18-2018 12:22pm - App v1 released</br>
 09-18-2018 11:46am - Books are shown</br>
-09-18-2018 9:30am - Initial Scaffolding.
+09-18-2018 9:30am - Initial Scaffolding
 
 ## Credits and Collaborations
 
