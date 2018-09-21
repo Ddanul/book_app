@@ -74,14 +74,22 @@ nav li {
   display: block;
   width: 80%;
   margin: 0 auto;
-  margin-top: .3em;
-  padding: .5em;
+  margin-top: 0.3em;
+  padding: 0.5em;
 }
 
 .label {
   display: inline-block;
   position: relative;
   left: -999px;
+}
+
+.--visible {
+  display: block;
+  left: initial;
+  padding: 0.4em;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .form__header {
